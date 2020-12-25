@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="NewsView" actionBarVisible="false" xmlns:component="component.*"
+backgroundColor="#000000" currentState="redian"
+creationComplete="view1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			protected function buttonBar_changeHandler(e:IndexChangeEvent):void
+			{
+				if(e.oldIndex != e.newIndex){
+				trace("Selected button index: " + 
+					String(e.newIndex) + "\n" + 
+					"Selected button label: " + 
+					e.target.selectedItem); 
+				}
+				
+				switch(e.newIndex)
+				{
+					case 0:
+						this.currentState = "tuijian";
+						break;
+					case 1:
+						this.currentState = "redian";
+						break;
+					case 2:
+						this.currentState = "shehui";
+						break;
+					case 3:
+						this.currentState = "yule";
+						break;
+					default:
+						this.currentState = "tuijian";
+						break;
+				}
+				
+				trace(e.newIndex);
+			}
+			
+			protected function view1_creationCompleteHandler(event:FlexEvent):void
+			{
+				topbar.addEventListener(NotifyEventConstants.BACKMAINMENU,backClick_Handler);
+			}
+			
+			private function backClick_Handler(event:NotifyEvent):void
+			{
+				navigator.popView();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:RadioButtonGroup id="radiogroup1"/>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+								<s:SolidColor id="fillColor" color="#333333"/>
+								<s:SolidColorStroke id="strokeColor" color="#333333"/>
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="tuijian" />
+		<s:State name="redian" />
+		<s:State name="shehui" />
+		<s:State name="yule" />
+	</s:states>
+	
+	
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+		<component:TopBar id="topbar" width="100%" text="新闻头条" iconSource="assets/refresh_icon.png"/>
+
+		<s:Group id="gpp" width="100%">
+				<s:Rect width="100%" height="{buttonBar.height + 20}" 
+						fill="{fillColor}" stroke="{strokeColor}"
+						left="6"
+						right="6"
+						radiusX="10"
+						radiusY="10"/>
+				<s:ButtonBar id="buttonBar" left="5" top="10" right="40" width="100%"
+							 requireSelection="true"
+							 change="buttonBar_changeHandler(event)"
+							 skinClass="skins.CustomButtonBarSkin">
+					<s:dataProvider>
+						<s:ArrayCollection source="['推荐', '热点', '社会', '娱乐']"/>
+					</s:dataProvider>
+				</s:ButtonBar>
+			<s:Button id="addBtnBar" right="40" verticalCenter="0" skinClass="skins.btnAddSkin"/>
+		</s:Group>
+		<!--<s:Group width="100%" >
+			<s:layout>
+				<s:HorizontalLayout gap="22" verticalAlign="middle"/>
+			</s:layout>
+			<s:Button label="推荐" skinClass="skins.BtnTabMenuSkin"/>
+			<s:Button label="热点" skinClass="skins.BtnTabMenuSkin"/>
+			<s:Button label="社会" skinClass="skins.BtnTabMenuSkin"/>
+			<s:Button label="娱乐" skinClass="skins.BtnTabMenuSkin"/>
+		</s:Group>
+	<component:TabButtonMenu width="100%" labelArray="['推荐', '热点', '社会', '娱乐']"/>-->
+		
+		<s:VGroup includeIn="redian" width="100%">
+			<component:NewsContents newsTitle="中方回应奥巴马钓鱼岛言论"/>
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+			<component:NewsContents newsTitle="240名失独者进京索国家补偿"/>
+			<component:NewsContents newsTitle="台军一架武装直升机坠毁民宅"/>
+		</s:VGroup>
+		
+		<s:VGroup includeIn="shehui" width="100%">
+			<component:NewsContents newsTitle="中方回应奥巴马钓鱼岛言论"/>
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+			<component:NewsContents newsTitle="240名失独者进京索国家补偿"/>
+			<component:NewsContents newsTitle="台军一架武装直升机坠毁民宅"/>
+		</s:VGroup>
+		
+		<s:VGroup includeIn="tuijian" width="100%">
+			<component:NewsContents newsTitle="中方回应奥巴马钓鱼岛言论"/>
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+		</s:VGroup>
+		
+		<s:VGroup includeIn="yule" width="100%">
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+			<component:NewsContents newsTitle="澳客机因乘客闹事迫降巴厘岛"/>
+			<component:NewsContents newsTitle="彭丽媛丹麦女王为儿童读童话"/>
+		</s:VGroup>
+
+	</s:Group>
+
+
+</s:View>

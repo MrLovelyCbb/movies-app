@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+			 xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Metadata>
+		<![CDATA[
+		[HostComponent("spark.components.ButtonBarButton")]
+		]]>
+	</fx:Metadata>
+	
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over" stateGroups="overStates"/>
+		<s:State name="down" stateGroups="downStates"/>
+		<s:State name="disabled"
+				 stateGroups="disabledStates"/>
+		<s:State name="upAndSelected"
+				 stateGroups="selectedStates, selectedUpStates"/>
+		<s:State name="overAndSelected"
+				 stateGroups="overStates, selectedStates"/>
+		<s:State name="downAndSelected"
+				 stateGroups="downStates, selectedStates"/>
+		<s:State name="disabledAndSelected"
+				 stateGroups="selectedUpStates, disabledStates, selectedStates"/>
+	</s:states>
+	
+	<fx:Declarations>
+	<s:SolidColor id="fillColor" color="#333333"
+	color.selectedStates="#ff8e01"/>
+	<s:SolidColorStroke id="strokeColor" color="#333333"
+	color.selectedStates="#ff8e01"
+	weight="2"/>
+	</fx:Declarations>
+	
+	<s:Rect fill="{fillColor}" stroke="{strokeColor}"
+			radiusX="6"
+			width="74"
+			height="38"
+			radiusY="6"/>
+	<!--<s:BitmapImage source.selectedStates="@Embed('assets/bg_tabbar.png')"/>-->
+	
+	<s:Label id="labelDisplay"
+			 left="4" right="4" top="4" bottom="4"
+			 fontFamily="黑体"
+			 color="#ff8e01"
+			 color.selectedStates="#532600"
+			 fontWeight="bold">
+	</s:Label>
+	
+	
+</s:SparkSkin>

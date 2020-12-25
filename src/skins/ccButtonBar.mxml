@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("spark.components.ButtonBar")]
+	</fx:Metadata>
+	
+	<!-- states -->
+	<s:states>
+		<s:State name="disabled" />
+		<s:State name="normal" />
+	</s:states>
+	
+	<!-- SkinParts
+	name=lastButton, type=mx.core.IFactory, required=false
+	name=firstButton, type=mx.core.IFactory, required=false
+	name=middleButton, type=mx.core.IFactory, required=true
+	name=dataGroup, type=spark.components.DataGroup, required=false
+	-->
+	
+	<fx:Declarations>
+		<fx:Component id="firstButton">
+			<s:ButtonBarButton skinClass="skins.WireFirstButtonSkin"/>
+		</fx:Component>
+		<fx:Component id="middleButton">
+			<s:ButtonBarButton skinClass="skins.WireFirstButtonSkin"/>
+		</fx:Component>
+		<fx:Component id="lastButton">
+			<s:ButtonBarButton skinClass="skins.WireFirstButtonSkin"/>
+		</fx:Component>
+		
+		<s:SolidColor id="fillColor" color="#333333"/>
+		<s:SolidColorStroke id="strokeColor" color="#333333" weight="2"/>
+	</fx:Declarations>
+	
+	<s:Rect top="0" left="0" bottom="0" right="0"
+			fill="{fillColor}" stroke="{strokeColor}"
+			radiusX="10"
+			radiusY="10"/>
+	
+	<s:DataGroup id="dataGroup" width="100%" height="100%">
+		<s:layout>
+			<s:ButtonBarHorizontalLayout gap="5"/>
+		</s:layout>
+	</s:DataGroup>
+	
+</s:Skin>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	
+	<s:BitmapImage width="100%" source="assets/interactive/bg_2.png"/>
+	<s:BitmapImage left="20" top="10" source="assets/interactive/play_icon.png"/>
+	<s:Label left="80" top="15" width="100%" color="#FF8E01" fontFamily="黑体" fontSize="24"
+			 fontWeight="bold" text="当前 ：我是歌手" textAlign="left" verticalAlign="middle"/>
+	<s:Label left="83" top="54" color="#4A4A4A" fontFamily="黑体" fontSize="20" fontWeight="bold"
+			 text="即将：女主播大赛"/>
+	<s:Label right="21" top="90" width="96" color="#4A4A4A" fontFamily="黑体" fontWeight="bold"
+			 text="直播间"/>
+</s:Group>

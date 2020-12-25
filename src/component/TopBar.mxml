@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		creationComplete="group1_creationCompleteHandler(event)">
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenLite;
+			import com.greensock.TweenMax;
+			
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			[Bindable]
+			private var topText:String = "字体";
+			[Bindable]
+			private var topIconSource:String;
+			
+			private var currentRotation:Number = 0;
+			private var rotationTimer:Timer;
+			
+			public function set iconSource(value:String):void{
+				this.topIconSource = value;
+			}
+			
+			public function set text(value:String):void{
+				this.topText = value;
+			}
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				TweenLite.delayedCall(1.5,function ():void{
+					top_busy.visible = false;
+					topRefresh.visible = false;
+				});
+				
+			}
+			
+			protected function gp_back_clickHandler(e:MouseEvent):void
+			{
+				this.parentDocument.navigator.popView();
+//				trace("===========================")
+//				this.dispatchEvent(new NotifyEvent(NotifyEventConstants.BACKMAINMENU));
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	
+	<s:BitmapImage width="100%" smooth="true" smoothingQuality="high"
+				   source="@Embed('assets/bg_topbar.png')"/>
+	<s:HGroup verticalCenter="0" left="18" verticalAlign="top">
+		<s:Group id="gp_back" click="gp_back_clickHandler(event)">
+			<s:BitmapImage smooth="true" smoothingQuality="high"
+						   source="@Embed('assets/topbar_icon.png')"/>
+		</s:Group>
+		<s:Label color="#532600" fontFamily="黑体" fontSize="32" fontWeight="bold" paddingLeft="22"
+				 text="{topText}" textAlign="center" verticalAlign="top"/>
+	</s:HGroup>
+	<s:BitmapImage id="topRefresh" visible="false" source="{this.topIconSource}" verticalCenter="0" right="25"/>
+	<s:BusyIndicator id="top_busy" verticalCenter="0" right="25" rotationInterval="50"/>
+</s:Group>

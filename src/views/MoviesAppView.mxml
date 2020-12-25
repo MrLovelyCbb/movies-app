@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="spark.components.*" title="主页视图"
+				 actionBarVisible="false"
+				 backgroundColor="0x542600" xmlns:component="component.*" creationComplete="callLater(view1_creationCompleteHandler)">
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenLite;
+			import com.greensock.TweenMax;
+			import com.greensock.plugins.TransformAroundCenterPlugin;
+			import com.greensock.plugins.TweenPlugin;
+			
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.core.FlexGlobals;
+			import mx.events.EffectEvent;
+			import mx.events.FlexEvent;
+			
+			import spark.components.Application;
+			import spark.transitions.SlideViewTransition;
+			import spark.transitions.ViewTransitionDirection;
+			
+			public var offsetX:Number = 0;
+			public var offsetY:Number = 0;
+			
+			private var _lastAngle:Number;
+			protected function view1_creationCompleteHandler():void
+			{
+				trace("X坐标"+gp_1.x+"Y坐标"+gp_1.y);
+				
+				TweenPlugin.activate([TransformAroundCenterPlugin]);
+				menuColumn.addEventListener(NotifyEventConstants.MENUMAINCLICK,onColumnClick);
+				menuAccount.addEventListener(NotifyEventConstants.ACCOUNTCLICK,onAccountClick);
+			}
+
+			private function onAccountClick(e:NotifyEvent):void
+			{
+				var id:String = e.data as String;
+				switch(id){
+					case "btnMyAccount":
+						navigator.pushView(LoginView);
+						break;
+				}
+			}
+
+			private function onColumnClick(e:NotifyEvent):void
+			{
+				var id:String = e.data as String;
+				switch(id){
+					case "btn_menu_news":
+						navigator.pushView(NewsView);
+						break;
+					case "btn_menu_activity":
+						navigator.pushView(ActivityView);
+						break;
+					case "btn_menu_guess":
+						navigator.pushView(GuessView);
+						break;
+					case "btn_menu_interactive":
+						navigator.pushView(InteractiveView);
+						break;
+					case "btn_menu_lucky":
+						navigator.pushView(LuckyView);
+						break;
+					case "btn_menu_vedio":
+						navigator.pushView(VediosView);
+						break;
+				}
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	<!--	<s:Rotate id="mainMoviesRotateEffect"
+				  target="{mainMovies}"
+				  autoCenterTransform="true"
+				  duration="0"
+				  effectEnd="mainMoviesRotateEffect_effectEndHandler(event)"/>
+		<s:Rotate id="menuColumnRotateEffect"
+				  target="{menuColumn}"
+				  autoCenterTransform="true"
+				  duration="0"
+				  effectEnd="menuColumnRotateEffect_effectEndHandler(event)"/>-->
+	</fx:Declarations>
+
+
+	<!-- 电影栏 -->
+	<component:MainMovies id="mainMovies" x="{gp_1.x}" y="{gp_banner.height + mainMovies.height*0.5}"/>
+	<!-- 栏目菜单栏 -->
+	<component:MenuColumnBar id="menuColumn" x="{gp_1.x}" y="{gp_banner.height + mainMovies.height*0.5}"/>
+	<!-- 用户设置栏-->
+	<component:MenuAccountBar id="menuAccount" x="{gp_1.x}" y="{gp_banner.height + mainMovies.height*0.5}"/>
+	<s:Group width="100%" height="27%" id="gp_banner">
+		<s:BitmapImage id="bg_banner" width="100%" height="100%" source="assets/main/main_banner.png"/>
+		<component:SearchBar left="15" right="15" bottom="40" horizontalCenter="0"/>
+	</s:Group>
+	
+	<s:Group id="gp_1" horizontalCenter="0" bottom="0" enabled="false">
+		
+	</s:Group>
+	
+	<!--<s:BitmapImage source="assets/main/main_bg.png"/>-->
+<!--	<s:BitmapImage source="assets/main/bg_Menu_ColumnBar.png"/>-->
+	<!--<component:MenuColumnBar x="862" y="862"/>-->
+	
+</s:View>

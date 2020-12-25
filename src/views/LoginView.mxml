@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="登录界面" actionBarVisible="false" xmlns:component="component.*"
+		backgroundColor="0x000000">
+	
+	<fx:Script>
+		<![CDATA[
+			protected function topbar1_mouseDownHandler(event:MouseEvent):void
+			{
+				navigator.popView();
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	
+	<component:TopBar text="账户登录" width="100%" mouseDown="topbar1_mouseDownHandler(event)"/>
+	<s:Group horizontalCenter="0" verticalCenter="-192">
+		<s:layout>
+			<s:VerticalLayout gap="25"/>
+		</s:layout>
+		<component:txtUserName horizontalCenter="0" y="190"/>
+		<component:txtPassWord horizontalCenter="0"  y="300"/>
+	</s:Group>
+
+<!--	<component:btnLogin x="190" y="380" btnLabel="登录"/>-->
+	<s:Button label="登录" horizontalCenter="0" skinClass="skins.BtnLoginSkin" verticalCenter="-40"/>
+	
+</s:View>

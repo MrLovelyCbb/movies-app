@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="GuessView" actionBarVisible="false" creationComplete="view1_creationCompleteHandler(event)" xmlns:component="component.*"
+		backgroundColor="0x000000">
+	<fx:Script>
+		<![CDATA[
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			
+			protected function view1_creationCompleteHandler(event:FlexEvent):void
+			{
+				topbar.addEventListener(NotifyEventConstants.BACKMAINMENU,backClick_Handler);
+			}
+			
+			private function backClick_Handler(event:NotifyEvent):void
+			{
+				navigator.popView();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="center" gap="50"/>
+		</s:layout>
+		<component:TopBar id="topbar" width="100%" text="有奖竞猜" iconSource="assets/refresh_icon.png"/>
+		<s:BitmapImage width="90%" top="50" smooth="true" smoothingQuality="high"
+					   source="@Embed('assets/guess/bg_pic.png')"/>
+		<s:Group width="90%">
+			<s:layout>
+				<s:VerticalLayout gap="18"/>
+			</s:layout>
+				<component:guessCell width="100%" setHot="true" setQuestion="请问你最喜欢的主持人是谁?" setAnswer="['董卿', '龚琳娜', '文章']"/>
+				<component:guessCell width="100%" setHot="true" setQuestion="请问你最喜欢的主持人是谁?" setAnswer="['董卿', '龚琳娜', '文章']"/>
+				<component:guessCell width="100%" setHot="true" setQuestion="哪位主持人造型最炫?" setAnswer="['普京', '卡扎特', '柳岩']"/>
+				<component:guessCell width="100%" setHot="true" setQuestion="请问你最喜欢的主持人是谁?" setAnswer="['董卿', '龚琳娜', '文章']"/>
+				<component:guessCell width="100%" setHot="true" setQuestion="你最在乎的主持人的哪个部位?" setAnswer="['鼻毛', '鬓角', '小拇指']"/>
+		</s:Group>
+	</s:Group>
+</s:View>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="InteractiveView" actionBarVisible="false" creationComplete="view1_creationCompleteHandler(event)" xmlns:component="component.*"
+		backgroundColor="#000000">
+	<fx:Script>
+		<![CDATA[
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			
+			protected function view1_creationCompleteHandler(event:FlexEvent):void
+			{
+				topbar.addEventListener(NotifyEventConstants.BACKMAINMENU,backClick_Handler);
+			}
+
+			private function backClick_Handler(event:Event):void
+			{
+				navigator.popView();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+
+		<s:Group width="100%">
+			<s:layout>
+				<s:VerticalLayout horizontalAlign="center" gap="20"/>
+			</s:layout>
+			<component:TopBar id="topbar" width="100%" text="栏目互动" iconSource="assets/refresh_icon.png"/>
+			<s:BitmapImage width="90%" source="assets/interactive/bg_pic.png"/>
+
+			<s:Group width="100%">
+			</s:Group>
+			
+		</s:Group>
+	<s:Group width="100%" bottom="0">
+		<s:BitmapImage  width="100%" source="assets/interactive/bg_oneKey.png"/>
+		<s:Label color="#532600" fontFamily="黑体" fontSize="50" fontWeight="bold"
+				 horizontalCenter="0" text="一键参与" verticalCenter="0"/>
+	</s:Group>
+	<component:btnInteractive x="257" y="603" setIcon="assets/interactive/dynamic_icon.png"
+							  setLabel="栏目动态"/>
+	<component:btnInteractive x="79" y="604" setIcon="assets/interactive/starAnchor_icon.png"
+							  setLabel="明星主播"/>
+	<component:btnInteractive x="440" y="604" setIcon="assets/interactive/showPost_icon.png"
+							  setLabel="节目公告"/>
+	<component:SpecialButton x="74" y="399" width="317"/>
+	<component:btnInteractive x="440" y="400" setIcon="assets/interactive/tv_icon.png"
+							  setLabel="精彩点播"/>
+</s:View>

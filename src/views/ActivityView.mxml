@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="ActivityView" actionBarVisible="false" creationComplete="view1_creationCompleteHandler(event)" xmlns:component="component.*"
+		backgroundColor="#000000">
+	<fx:Script>
+		<![CDATA[
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			
+			protected function view1_creationCompleteHandler(event:FlexEvent):void
+			{
+				topbar.addEventListener(NotifyEventConstants.BACKMAINMENU,backClick_Handler);
+			}
+
+			private function backClick_Handler(event:NotifyEvent):void
+			{
+				navigator.popView();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="center" gap="50"/>
+		</s:layout>
+		<component:TopBar id="topbar" width="100%" text="线下活动" iconSource="assets/refresh_icon.png"/>
+		<s:Group width="90%">
+			<s:BitmapImage width="100%" smooth="true" smoothingQuality="high"
+						   source="@Embed('assets/activity/bg_pic.png')"/>
+			<s:Group width="100%" bottom="0">
+				<s:BitmapImage width="100%" smooth="true" smoothingQuality="high"
+							   source="@Embed('assets/activity/bg_shadow.png')"/>
+				<s:Label color="#FFFFFF" left="10" verticalCenter="0" fontFamily="黑体" fontSize="30" fontWeight="bold" text="5月大型活动征集"/>
+			</s:Group>
+		</s:Group>
+		
+		<s:Group width="90%">
+			<s:layout>
+				<s:VerticalLayout gap="10"/>
+			</s:layout>
+			<component:activityCell width="100%"/>
+			<component:activityCell width="100%"/>
+			<component:activityCell width="100%"/>
+			<component:activityCell width="100%"/>
+			<component:activityCell width="100%"/>
+			<component:activityCell width="100%"/>
+		</s:Group>
+
+	</s:Group>
+</s:View>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<s:BitmapImage width="100%" source="assets/bg_cell.png"/>
+	<s:BitmapImage smooth="true" smoothingQuality="high" source="@Embed('assets/hot_icon.png')"/>
+	<s:Label left="22" top="15" fontFamily="黑体" fontSize="28" fontWeight="bold" text="武汉塔卡超级密室!"/>
+	<s:Label left="22" top="55" fontFamily="黑体" fontSize="24" fontWeight="normal" text="武汉密室高手大征集活动!"/>
+	<s:BitmapImage right="15" smooth="true" smoothingQuality="high"
+				   source="@Embed('assets/activity/1.png')" verticalCenter="0"/>
+</s:Group>

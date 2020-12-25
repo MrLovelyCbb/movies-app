@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" xmlns:component="component.*"
+		scaleX="0.5"
+		scaleY="0.5">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	
+	
+	<!-- 电影栏 -->
+	<s:BitmapImage id="bg_background" x="-1392" y="-1469" smooth="true" smoothingQuality="high"
+				   source="@Embed('assets/main/main_bg.png')"/>
+	<s:Group id="menu_column">
+		<s:BitmapImage smooth="true" source="@Embed('assets/main/bg_Menu_ColumnBar.png')"/>
+		<s:Button x="846" y="326" id="btn_menu_activity" label="线下活动" skinClass="skins.MenuActivitySkin" click="btnMenuGroup_clickHandler(event)"/>
+		<s:Button x="169" y="675" id="btn_menu_guess" label="竞猜" skinClass="skins.MenuGuessSkin" click="btnMenuGroup_clickHandler(event)"/>
+		<s:Button x="509" y="886" id="btn_menu_interactive" label="互动" skinClass="skins.MenuInteractiveSkin" click="btnMenuGroup_clickHandler(event)"/>
+		<s:Button x="164" y="339" id="btn_menu_lucky" label="幸运抽奖" skinClass="skins.MenuLuckySkin" click="btnMenuGroup_clickHandler(event)"/>
+		<s:Button x="503" y="120" id="btn_menu_news" label="新闻" skinClass="skins.MenuNewsSkin" click="btnMenuGroup_clickHandler(event)"/>
+		<s:Button x="838" y="710" id="btn_menu_vedio" label="视频" skinClass="skins.MenuVideoSkin" click="btnMenuGroup_clickHandler(event)"/>
+	</s:Group>
+	<s:Group id="menu_account">
+		<component:MenuAccountBar x="350" y="342"/>
+	</s:Group>
+</s:Group>

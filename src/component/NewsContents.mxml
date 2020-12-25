@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 minHeight="136"
+		 width="100%"
+		 color="#333333">
+	
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var title:String;
+			public function set newsTitle(val:String):void{
+				this.title = val;
+			}
+		]]>
+	</fx:Script>
+	
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+		<s:SolidColor id="fillColor" color="#333333"/>
+		<s:SolidColorStroke id="strokeColor" color="#333333"/>
+	</fx:Declarations>
+	
+	
+	
+	
+	<s:Rect width="100%" height="136" 
+			fill="{fillColor}" stroke="{strokeColor}"
+			left="6"
+			right="6"
+			radiusX="10"
+			radiusY="10"/>
+	
+	<s:Label left="35" top="26" color="#ff8e01" fontFamily="黑体" fontSize="34" fontWeight="normal"
+			 text="{title}"/>
+	
+</s:Group>

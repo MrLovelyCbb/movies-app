@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+									 xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="spark.components.*" firstView="views.FlashView" applicationDPI="320" splashScreenScaleMode="letterbox"
+									 runtimeDPIProvider="CustomDPIProvider"
+									 initialize="viewnavigatorapplication1_initializeHandler(event)"
+									 backgroundColor="0x000000">
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.plugins.ShortRotationPlugin;
+			import com.greensock.plugins.TransformAroundCenterPlugin;
+			import com.greensock.plugins.TweenPlugin;
+			
+			import mx.events.FlexEvent;
+			
+			import spark.components.Application;
+			
+			import views.MoviesAppView;
+			
+			protected function viewnavigatorapplication1_initializeHandler(event:FlexEvent):void
+			{
+				TweenPlugin.activate([TransformAroundCenterPlugin]);
+				TweenPlugin.activate([ShortRotationPlugin]);
+//				this.addEventListener(KeyboardEvent.KEY_UP,keyBackHandler);
+//				this.addEventListener(KeyboardEvent.KEY_DOWN,keyBackHandler)
+			}
+			
+			protected function keyBackHandler(evt:KeyboardEvent):void
+			{
+				if(evt.type!=KeyboardEvent.KEY_UP) return;
+				evt.stopImmediatePropagation();
+				evt.stopPropagation();
+				if(evt.keyCode!=16777238 && evt.keyCode!=8) return;
+				
+				if(this.navigator.activeView is MoviesAppView)
+				{
+//					NativeApplication.nativeApplication.exit();
+				}else
+				{
+					this.navigator.popView();
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+</s:ViewNavigatorApplication>

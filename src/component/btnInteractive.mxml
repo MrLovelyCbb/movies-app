@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" creationComplete="group1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				
+			}
+			
+			[Bindable]
+			private var btnIcon:String;
+			[Bindable]
+			private var btnLabel:String;
+			
+			public function set setIcon(value:String):void{
+				this.btnIcon = value;
+			}
+			
+			public function set setLabel(value:String):void{
+				this.btnLabel = value;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<s:BitmapImage source="assets/interactive/bg_1.png"/>
+	
+	<s:BitmapImage horizontalCenter="0" source="{this.btnIcon}"
+				   verticalCenter="-20"/>
+	<s:Label fontFamily="黑体" fontSize="24" fontWeight="bold" horizontalCenter="0" verticalCenter="40" text="{this.btnLabel}"/>
+</s:Group>

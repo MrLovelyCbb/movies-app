@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	
+		<s:BitmapImage left="0" right="0" height="45"
+					   source="@Embed('assets/main/bg_main_input_Txt.png')"/>
+		
+		<s:TextInput id="txtInput" left="0" right="94" height="62" borderVisible="false"
+					 color="#000000" contentBackgroundAlpha="0" fontFamily="宋体" fontSize="24"
+					 text="1231231" y="-8"/>
+		<s:BitmapImage id="speaker" width="30" height="30" right="18" verticalCenter="-5" source="assets/main/speaker_icon.png"/>
+</s:Group>

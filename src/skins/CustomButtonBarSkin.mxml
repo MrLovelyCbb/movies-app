@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark" initialize="skin1_initializeHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			public static var BUTS:ButtonBarHorizontalLayout;
+			
+			protected function skin1_initializeHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				BUTS=btnC;
+				systemManager.topLevelSystemManager.stage;
+				//btnC.gap=100;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Metadata>
+		<![CDATA[
+		[HostComponent("spark.components.ButtonBar")]
+		]]>
+	</fx:Metadata>
+	
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+	</s:states>
+	
+	<fx:Declarations>
+		<fx:Component id="firstButton">
+			<s:ButtonBarButton skinClass="skins.WireFirstButtonSkin"/>
+		</fx:Component>
+		<fx:Component id="middleButton">
+			<s:ButtonBarButton skinClass="skins.WireFirstButtonSkin"/>
+		</fx:Component>
+		<fx:Component id="lastButton">
+			<s:ButtonBarButton skinClass="skins.WireFirstButtonSkin"/>
+		</fx:Component>
+		
+	<!--	<s:SolidColor id="fillColor" color="#333333"/>
+		<s:SolidColorStroke id="strokeColor" color="#333333" weight="2"/>-->
+	</fx:Declarations>
+	
+<!--	<s:Rect top="0" left="0" bottom="0" right="0"
+			fill="{fillColor}" stroke="{strokeColor}"
+			radiusX="10"
+			radiusY="10"/>-->
+	
+	<s:DataGroup id="dataGroup" width="100%" height="100%" left="38">
+		<s:layout>
+			<s:ButtonBarHorizontalLayout  id="btnC" />
+		</s:layout>
+	</s:DataGroup>
+	
+</s:Skin>

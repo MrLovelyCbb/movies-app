@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 creationComplete="group1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			[Bindable]
+			private var isHot:Boolean = false;
+			
+			[Bindable]
+			private var question:String;
+			
+			[Bindable]
+			private var answer:Array;
+			
+			public function set setHot(value:Boolean):void{
+				this.isHot = value;
+			}
+			
+			public function set  setQuestion(value:String):void{
+				this.question = value;
+			}
+			
+			public function set setAnswer(value:Array):void{
+				this.answer = value;
+				(gp_answer.getElementAt(0) as RadioButton).label = answer[0];
+				(gp_answer.getElementAt(1) as RadioButton).label = answer[1];
+				(gp_answer.getElementAt(2) as RadioButton).label = answer[2];
+			}
+			
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<s:BitmapImage width="100%" source="assets/bg_cell.png"/>
+	<s:BitmapImage smooth="true" smoothingQuality="high" visible="{this.isHot}" source="@Embed('assets/hot_icon.png')"/>
+	<s:BitmapImage left="26" top="20" source="assets/star_icon.png"/>
+	<s:Label left="60" top="20" fontFamily="黑体" fontSize="24" text="{this.question}"/>
+	<s:HGroup id="gp_answer" x="0" bottom="17" left="38" width="100%" gap="30" horizontalAlign="left">
+		<s:RadioButton label="董卿" selected="true" skinClass="skins.RadioButtonSkin"/>
+		<s:RadioButton label="龚琳娜" skinClass="skins.RadioButtonSkin"/>
+		<s:RadioButton label="文章" skinClass="skins.RadioButtonSkin"/>
+	</s:HGroup>
+</s:Group>

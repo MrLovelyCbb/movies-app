@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 creationComplete="group1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenLite;
+			import com.greensock.easing.Cubic;
+			import com.greensock.plugins.ShortRotationPlugin;
+			
+			import mx.events.FlexEvent;
+			private var timer:Timer;
+			public var isStart:Boolean=false; //时候已经启动过
+			private var isDeleay:Boolean=false; //是否开始延迟
+			private var rungroup:int=0; //已经循环的圈数
+			private var doCount:int=0; //抽奖次数
+			private var currentPix:int=1; //当期那设定的几率点
+			private var index:int = 1;
+			private var totalDaly :int = 400;
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				gp_point.rotation = 360
+			}
+			
+			protected function gp_point_clickHandler(event:MouseEvent):void
+			{
+				timer=new Timer(30);
+				timer.addEventListener(TimerEvent.TIMER, onTimer);
+				totalDaly = Math.round(Math.random() * 400);
+				index= Math.round(Math.random() * 5);
+				timer.start();
+			}
+
+			private function onTimer(event:TimerEvent):void
+			{
+				isStart=true;
+				if (isDeleay)
+				{
+					timer.delay+=30;
+					TweenLite.to(gp_point,0.1,{shortRotation:{rotation:this.timer.delay},overwrite:true,ease:Cubic.easeOut});
+				}
+				else
+				{
+					if (rungroup > 1 && currentPix == index || currentPix == 0)
+					{
+						isDeleay=true;
+					}
+				}
+				if (index > 5)
+				{
+					index=0;
+					rungroup++;
+				}
+				
+					if (timer.delay > totalDaly)
+					{
+						timer.stop();
+						isStart=false;
+						if (doCount == 1)
+						{
+							timer.reset();
+						}
+					}
+					index++;
+				}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:BitmapImage width="100%" smooth="true" smoothingQuality="high"
+				   source="@Embed('assets/lucky/pan.png')"/>
+	<s:BitmapImage width="100%" smooth="true" smoothingQuality="high"
+				   source="@Embed('assets/lucky/pan_shadow.png')"/>
+	<s:Group id="gp_point"  click="gp_point_clickHandler(event)" horizontalCenter="0" verticalCenter="0">
+	<s:BitmapImage id="point" x="10" y="-30" smooth="true" smoothingQuality="high"
+				   source="@Embed('assets/lucky/point.png')"/>
+		</s:Group>
+	
+	
+	<s:BitmapImage right="166" top="59" width="121" height="71" horizontalCenter="-3" smooth="true"
+				   smoothingQuality="high" source="@Embed('assets/lucky/1.png')"
+				   verticalCenter="-130"/>
+	<s:BitmapImage right="298" top="137" width="100" horizontalCenter="-124" smooth="true"
+				   smoothingQuality="high" source="@Embed('assets/lucky/2.png')"/>
+	<s:BitmapImage right="244" top="269" width="115" horizontalCenter="-78" smooth="true"
+				   smoothingQuality="high" source="@Embed('assets/lucky/3.png')"/>
+	<s:BitmapImage right="88" top="277" width="121" horizontalCenter="75" source="assets/lucky/4.png"/>
+	<s:BitmapImage right="56" top="145" width="91" horizontalCenter="122" smooth="true"
+				   smoothingQuality="high" source="@Embed('assets/lucky/5.png')"/>
+</s:Group>

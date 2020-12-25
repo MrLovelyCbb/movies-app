@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+			 minWidth="21" minHeight="21" alpha.disabledStates="0.5">
+	<fx:Metadata>
+		<![CDATA[
+		[HostComponent("spark.components.ButtonBarButton")]
+		]]>
+	</fx:Metadata>
+	
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over" stateGroups="overStates"/>
+		<s:State name="down" stateGroups="downStates"/>
+		<s:State name="disabled" stateGroups="disabledStates"/>
+		<s:State name="upAndSelected" stateGroups="selectedStates, selectedUpStates"/>
+		<s:State name="overAndSelected" stateGroups="overStates, selectedStates"/>
+		<s:State name="downAndSelected" stateGroups="downStates, selectedStates"/>
+		<s:State name="disabledAndSelected" stateGroups="selectedUpStates, disabledStates, selectedStates"/>
+	</s:states>
+	
+	
+	<!--fx:Declarations>
+	<s:SolidColor id="fillColor" color="#FFFFFF"
+	color.selectedStates="#DDDDDD"/>
+	<s:SolidColorStroke id="strokeColor" color="#333333"
+	color.selectedStates="#111111"
+	weight="2"/>
+	</fx:Declarations>
+	
+	<s:Rect top="0" left="0" bottom="0" right="0"
+	topRightRadiusX="15" topRightRadiusY="15"
+	bottomRightRadiusX="15" bottomRightRadiusY="15"
+	fill="{fillColor}" stroke="{strokeColor}"/-->
+	<s:BitmapImage source="@Embed('assets/bg_tabbar.png')" 
+				   source.selectedStates="@Embed('assets/bg_tabbar.png')"
+				   
+				   /> 
+	<s:Label id="labelDisplay" left="25" right="25" top="9"
+			 bottom="6" 
+			 fontWeight="bold">
+	</s:Label>
+	
+</s:SparkSkin>

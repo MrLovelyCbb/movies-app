@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+>	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("spark.components.Button")]
+	</fx:Metadata>
+	
+	<!-- states -->
+	<s:states>
+		<s:State name="disabled" />
+		<s:State name="down" />
+		<s:State name="over" />
+		<s:State name="up" />
+	</s:states>
+	
+	<!-- SkinParts
+	name=iconDisplay, type=spark.primitives.BitmapImage, required=false
+	name=labelDisplay, type=spark.core.IDisplayText, required=false
+	-->
+	
+	<fx:Declarations>
+		<s:SolidColor id="fillColor" color="#333333"
+					  color.down="#ff8e01"
+					  color.disabled="#ff8e01"
+					  />
+		<s:SolidColorStroke id="strokeColor" color="#333333"
+							color.down="#ff8e01"
+							color.disabled="#ff8e01"
+							weight="2"/>
+	</fx:Declarations>
+	
+	<s:Rect top="0" left="0" bottom="0" right="0"
+			fill="{fillColor}" stroke="{strokeColor}"
+			radiusX="6"
+			radiusY="6"/>
+	
+	<s:Label id="labelDisplay" left="20" right="20" top="9"
+			 bottom="6" 
+			 fontFamily="黑体"
+			 color="#ff8e01"
+			 color.down="#532600"
+			 fontWeight="bold">
+	</s:Label>
+	
+</s:Skin>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+			 xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+			 minHeight="70">
+	<fx:Metadata>
+		<![CDATA[
+		[HostComponent("spark.components.ButtonBarButton")]
+		]]>
+	</fx:Metadata>
+	<fx:Script>
+		<![CDATA[
+			import flash.filters.BitmapFilterType;
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over" stateGroups="overStates"/>
+		<s:State name="down" stateGroups="downStates"/>
+		<s:State name="disabled"
+				 stateGroups="disabledStates"/>
+		<s:State name="upAndSelected"
+				 stateGroups="selectedStates, selectedUpStates"/>
+		<s:State name="overAndSelected"
+				 stateGroups="overStates, selectedStates"/>
+		<s:State name="downAndSelected"
+				 stateGroups="downStates, selectedStates"/>
+		<s:State name="disabledAndSelected"
+				 stateGroups="selectedUpStates, disabledStates, selectedStates"/>
+	</s:states>
+	
+	<fx:Declarations>
+		<s:SolidColor id="fillColor" color="#333333"
+					  color.selectedStates="#333333"/>
+		<s:SolidColorStroke id="strokeColor" color="#333333"
+							color.selectedStates="#333333"
+							weight="2"/>
+	</fx:Declarations>
+	
+	<s:Rect top="0" left="0" bottom="-1" right="0"
+			top.selectedStates="4"
+			right.selectedStates="2"
+			bottom.selectedStates="-4"
+			fill="{fillColor}" stroke="{strokeColor}"/>
+	<s:Label id="labelDisplay"
+			verticalCenter="0" horizontalCenter="0"
+			 fontFamily="黑体"
+			 color="#ffffff"
+			 color.selectedStates="#ff8e01"
+			 fontWeight="bold">
+	</s:Label>
+	
+</s:SparkSkin>

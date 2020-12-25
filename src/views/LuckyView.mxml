@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="LuckyView" actionBarVisible="false" creationComplete="view1_creationCompleteHandler(event)" xmlns:component="component.*"
+		backgroundColor="#000000">
+	<fx:Script>
+		<![CDATA[
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			
+			protected function view1_creationCompleteHandler(event:FlexEvent):void
+			{
+				topbar.addEventListener(NotifyEventConstants.BACKMAINMENU,backClick_Handler);
+			}
+			
+			private function backClick_Handler(event:NotifyEvent):void
+			{
+				navigator.popView();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="center" gap="20" />
+		</s:layout>
+		<component:TopBar id="topbar" width="100%" text="幸运抽奖" iconSource="assets/refresh_icon.png"/>
+		<component:PanZhuan width="90%"/>
+		
+		
+		<s:Group width="70%">
+			<s:BitmapImage width="100%" source="assets/lucky/bg_scroll.png"/>
+			<s:Group>
+				<s:layout>
+					<s:VerticalLayout/>
+				</s:layout>
+				<s:Label color="#FF8E01" fontSize="28" text="恭喜159XXXX8503获得XX礼品一份"/>
+				<s:Label color="#FF8E01" fontSize="28" text="恭喜159XXXX8503获得XX礼品一份"/>
+				<s:Label color="#FF8E01" fontSize="28" text="恭喜159XXXX8503获得XX礼品一份"/>
+				<s:Label color="#FF8E01" fontSize="28" text="恭喜159XXXX8503获得XX礼品一份"/>
+			</s:Group>
+		</s:Group>
+
+	</s:Group>
+</s:View>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		scaleX="0.5"
+		scaleY="0.5"
+		creationComplete="callLater(group1_creationCompleteHandler)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenLite;
+			import com.greensock.easing.Cubic;
+			
+			import event.NotifyEvent;
+			import event.NotifyEventConstants;
+			
+			import mx.events.FlexEvent;
+			
+			// VARIABLES
+			private const radToDeg:Number = 180 / Math.PI;
+			private var isDraggingKnob:Boolean = false;
+			private var oldAngle:Number;
+			
+			protected function btnMenuGroup_clickHandler(e:MouseEvent):void
+			{
+				this.dispatchEvent(new NotifyEvent(NotifyEventConstants.MENUMAINCLICK,e.currentTarget.id));
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				this.transform.matrix = new Matrix();
+				this.x = -623;
+				this.y = -623;
+			}
+			
+			/**
+			 * 选中状态
+			 * */
+			private function disableState():void{
+				
+			}
+
+			
+			private var _angle:Number = 0;
+			public function get angle():Number
+			{ return _angle; }
+			public function set angle(new_angle:Number):void
+			{
+				_angle = new_angle;
+				
+				if (this)
+					TweenLite.to(this,0.5,{shortRotation:{rotation:this.angle},overwrite:true,ease:Cubic.easeOut});
+			}
+			
+			private function stopDragging():void
+			{
+				isDraggingKnob = false;
+				
+				stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+				stage.removeEventListener(Event.DEACTIVATE, onDeactivate);
+				stage.removeEventListener(Event.MOUSE_LEAVE, onDeactivate);
+				
+				stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			}
+			
+			protected function onMouseDown(event:MouseEvent):void
+			{
+				if (isDraggingKnob)
+				{ stopDragging(); }
+				isDraggingKnob = true;
+				oldAngle = Math.atan2(this.mouseY, this.mouseX) * radToDeg;
+				stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+				stage.addEventListener(Event.DEACTIVATE, onDeactivate);
+				stage.addEventListener(Event.MOUSE_LEAVE, onDeactivate);
+				
+				stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			}
+			
+			private function onMouseUp(mouseEv:MouseEvent):void
+			{
+				updateVolume(this.mouseX, this.mouseY);
+				stopDragging();
+			}
+			
+			private function onDeactivate(ev:Event):void
+			{
+				stopDragging();
+			}
+			
+			private function onMouseMove(mouseEv:MouseEvent):void
+			{ updateVolume(this.mouseX, this.mouseY); }
+			
+			private function updateVolume(newX:Number, newY:Number):void
+			{
+				if ((isDraggingKnob) && (this.enabled))
+				{
+					var newAngle:Number = Math.atan2(newY, newX) * radToDeg; 
+					if ((oldAngle < -90) && (newAngle > 90))
+					{ oldAngle += 360; }
+					if ((oldAngle > 90) && (newAngle < -90))
+					{ oldAngle -= 360; }
+					var angleDiff:Number = newAngle - oldAngle;
+					this.angle += angleDiff;
+					oldAngle = newAngle;
+				}
+			}
+			
+			protected function group1_creationCompleteHandler():void
+			{
+				this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Metadata>
+		[Event(name="MenuMainClick", type="event.NotifyEvent")]
+	</fx:Metadata>
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:Group id="menu_column" x="-623" y="-623">
+		<s:BitmapImage id="menu_bg" smooth="true" source="@Embed('assets/main/bg_Menu_ColumnBar.png')"/>
+			<s:Button x="846" y="326" id="btn_menu_activity" label="线下活动" skinClass="skins.MenuActivitySkin" click="btnMenuGroup_clickHandler(event)"/>
+			<s:Button x="169" y="675" id="btn_menu_guess" label="竞猜" skinClass="skins.MenuGuessSkin" click="btnMenuGroup_clickHandler(event)"/>
+			<s:Button x="509" y="886" id="btn_menu_interactive" label="互动" skinClass="skins.MenuInteractiveSkin" click="btnMenuGroup_clickHandler(event)"/>
+			<s:Button x="164" y="339" id="btn_menu_lucky" label="幸运抽奖" skinClass="skins.MenuLuckySkin" click="btnMenuGroup_clickHandler(event)"/>
+			<s:Button x="503" y="120" id="btn_menu_news" label="新闻" skinClass="skins.MenuNewsSkin" click="btnMenuGroup_clickHandler(event)"/>
+			<s:Button x="838" y="710" id="btn_menu_vedio" label="视频" skinClass="skins.MenuVideoSkin" click="btnMenuGroup_clickHandler(event)"/>
+	</s:Group>
+</s:Group>
